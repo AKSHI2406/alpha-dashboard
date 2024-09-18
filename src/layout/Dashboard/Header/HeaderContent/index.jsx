@@ -5,10 +5,14 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
 // project import
-import Search from './Search';
+// import Search from './Search';
 import Profile from './Profile';
 import Notification from './Notification';
 import MobileSection from './MobileSection';
+
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+
 
 // project import
 import { GithubOutlined } from '@ant-design/icons';
@@ -20,7 +24,9 @@ export default function HeaderContent() {
 
   return (
     <>
-      {!downLG && <Search />}
+    
+    {!downLG && <h2 style={{ width: '100%', ml: { xs: 0, md: 1 }, paddingLeft: '16px' }}>Dashboard</h2>}
+      {/* {!downLG && <Search />} */}
       {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
       <IconButton
         component={Link}
