@@ -1,4 +1,3 @@
-// ==============================|| THEME CONFIG  ||============================== //
 
 const config = {
   defaultPath: '/dashboard/default',

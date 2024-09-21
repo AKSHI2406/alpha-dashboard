@@ -70,7 +70,7 @@ export default function Notification() {
   const iconBackColorOpen = 'grey.100';
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+    <Box sx={{ flexShrink: 0, ml: 0, border: '1px solid #D3D3D3', borderRadius: '16px', margin: '6px' }}>
       <IconButton
         color="secondary"
         variant="light"

@@ -26,24 +26,24 @@ const utilities = {
   type: 'group',
   children: [
     {
-      id: 'util-typography',
-      title: 'Typography',
+      id: 'util-messages',
+      title: 'Messages',
       type: 'item',
-      url: '/typography',
+      url: '/messages',
       icon: icons.FontSizeOutlined
     },
     {
-      id: 'util-color',
-      title: 'Color',
+      id: 'util-customers',
+      title: 'Customers',
       type: 'item',
-      url: '/color',
+      url: '/customers',
       icon: icons.BgColorsOutlined
     },
     {
-      id: 'util-shadow',
-      title: 'Shadow',
+      id: 'util-help',
+      title: 'Help & Support',
       type: 'item',
-      url: '/shadow',
+      url: '/help',
       icon: icons.BarcodeOutlined
     }
   ]

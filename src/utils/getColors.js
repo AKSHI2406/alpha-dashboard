@@ -1,4 +1,3 @@
-// ==============================|| CUSTOM FUNCTION - COLORS ||============================== //
 
 const getColors = (theme, color) => {
   switch (color) {

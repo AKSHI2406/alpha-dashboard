@@ -1,7 +1,5 @@
-// assets
 import { LoginOutlined, ProfileOutlined } from '@ant-design/icons';
 
-// icons
 const icons = {
   LoginOutlined,
   ProfileOutlined
@@ -16,17 +14,17 @@ const pages = {
   children: [
     {
       id: 'login1',
-      title: 'Login',
+      title: 'Shipments',
       type: 'item',
-      url: '/login',
+      url: '/shipments',
       icon: icons.LoginOutlined,
       target: true
     },
     {
       id: 'register1',
-      title: 'Register',
+      title: 'Orders',
       type: 'item',
-      url: '/register',
+      url: '/orders',
       icon: icons.ProfileOutlined,
       target: true
     }

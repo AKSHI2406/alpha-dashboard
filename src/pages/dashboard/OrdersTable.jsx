@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// material-ui
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
@@ -10,25 +9,22 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
 
-// third-party
 import { NumericFormat } from 'react-number-format';
 
-// project import
-import Dot from 'components/@extended/Dot';
-
-function createData(tracking_no, name, fat, carbs, protein) {
-  return { tracking_no, name, fat, carbs, protein };
+function createData(tracking_no, name, arrival_time, weight, route) {
+  return { tracking_no, name, arrival_time, weight, route };
 }
 
 const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
+  createData(84564564, 'Clothing', 40, 2, 40570, 11),
   createData(98764564, 'Laptop', 300, 0, 180139),
   createData(98756325, 'Mobile', 355, 1, 90989),
   createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
+  createData(13286564, 'Furniture', 100, 1, 83348),
   createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
+  createData(13256498, 'Electronic', 125, 2, 70999),
   createData(98753263, 'Mouse', 89, 2, 10570),
   createData(98753275, 'Desktop', 185, 1, 98063),
   createData(98753291, 'Chair', 100, 0, 14001)
@@ -65,33 +61,44 @@ const headCells = [
     id: 'tracking_no',
     align: 'left',
     disablePadding: false,
-    label: 'Tracking No.'
+    label: 'ORDER ID.'
   },
   {
     id: 'name',
     align: 'left',
     disablePadding: true,
-    label: 'Product Name'
+    label: 'CATEGORY'
   },
   {
-    id: 'fat',
+    id: 'arrival_time',
     align: 'right',
     disablePadding: false,
-    label: 'Total Order'
+    label: 'ARRIVAL TIME'
   },
   {
-    id: 'carbs',
+    id: 'weight',
     align: 'left',
     disablePadding: false,
-
-    label: 'Status'
+    label: 'WEIGHT'
   },
   {
-    id: 'protein',
+    id: 'route',
     align: 'right',
     disablePadding: false,
-    label: 'Total Amount'
+    label: 'ROUTE'
   }
+  // {
+  //   id: 'route',
+  //   align: 'right',
+  //   disablePadding: false,
+  //   label: 'FEE'
+  // },
+  // {
+  //   id: 'route',
+  //   align: 'right',
+  //   disablePadding: false,
+  //   label: 'STATUS'
+  // }
 ];
 
 // ==============================|| ORDER TABLE - HEADER ||============================== //
@@ -118,29 +125,54 @@ function OrderTableHead({ order, orderBy }) {
 function OrderStatus({ status }) {
   let color;
   let title;
+  let textColor;
 
   switch (status) {
     case 0:
       color = 'warning';
       title = 'Pending';
+      textColor = '#ff8f00';
       break;
     case 1:
       color = 'success';
-      title = 'Approved';
+      title = 'Delivered';
+      textColor = '#388e3c';
       break;
     case 2:
       color = 'error';
-      title = 'Rejected';
+      title = 'Shipping';
+      textColor = '#c62828';
       break;
     default:
       color = 'primary';
       title = 'None';
+      textColor = '#0d47a1';
   }
+  const backgroundColors = {
+    warning: '#ffe0b2',
+    success: '#c8e6c9',
+    error: '#ef9a9a',
+    primary: '#bbdefb'
+  };
 
   return (
-    <Stack direction="row" spacing={1} alignItems="center">
-      <Dot color={color} />
-      <Typography>{title}</Typography>
+    <Stack
+      direction="row"
+      spacing={0}
+      alignItems="center"
+      sx={{
+        backgroundColor: backgroundColors[color],
+        borderRadius: '5px',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '4px 20px',
+        width: '100px',
+        height: '32px',
+        minWidth: 'fit-content',
+        boxSizing: 'border-box' 
+      }}
+    >
+      <Typography sx={{ color: textColor }}>{title}</Typography>
     </Stack>
   );
 }
@@ -153,6 +185,9 @@ export default function OrderTable() {
 
   return (
     <Box>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 2, mt: '24px', margin: '24px 12px' }}>
+        Tracking Orders
+      </Typography>
       <TableContainer
         sx={{
           width: '100%',
@@ -181,12 +216,14 @@ export default function OrderTable() {
                     <Link color="secondary"> {row.tracking_no}</Link>
                   </TableCell>
                   <TableCell>{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.arrival_time}</TableCell>
                   <TableCell>
-                    <OrderStatus status={row.carbs} />
+                    <div style={{ borderRadius: '2px', padding: '0px 8px' }}>
+                      <OrderStatus status={row.weight} />
+                    </div>
                   </TableCell>
                   <TableCell align="right">
-                    <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                    <NumericFormat value={row.route} displayType="text" thousandSeparator prefix="$" />
                   </TableCell>
                 </TableRow>
               );

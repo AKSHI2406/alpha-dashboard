@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 // header style
 const headerSX = {
   p: 2.5,
-  '& .MuiCardHeader-action': { m: '0px auto', alignSelf: 'center' }
+  '& .MuiCardHeader-action': { m: '0px 0px', alignSelf: 'center' }
 };
 
 function MainCard(

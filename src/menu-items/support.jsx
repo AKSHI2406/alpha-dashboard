@@ -15,17 +15,17 @@ const support = {
   type: 'group',
   children: [
     {
-      id: 'sample-page',
-      title: 'Sample Page',
+      id: 'settings',
+      title: 'Settings',
       type: 'item',
-      url: '/sample-page',
+      url: '/settings',
       icon: icons.ChromeOutlined
     },
     {
-      id: 'documentation',
-      title: 'Documentation',
+      id: 'taxes',
+      title: 'Taxes',
       type: 'item',
-      url: 'https://codedthemes.gitbook.io/mantis/',
+      url: '/taxes',
       icon: icons.QuestionOutlined,
       external: true,
       target: true
